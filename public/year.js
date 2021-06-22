@@ -11,14 +11,18 @@ const monthDays = (m) => {
 const month = () => {
     for(let m = 0; m < 12; m++){
         let monthDOM = document.querySelector(`.month${m}`);
-        monthDOM.innerHTML = '';
+        monthDOM.innerHTML = `<h2>${months[m]}, ${baseDate.getFullYear()} Calendar`;
         for(let i = 0; i < monthDays(m); i++){
             let tempDate = new Date(baseDate.getFullYear(), m, 1); tempDate.setDate(tempDate.getDate()+i);
             let date = tempDate.getDate(), month = tempDate.getMonth(), year = tempDate.getFullYear();
-            let date_btn = document.createElement('button'); date_btn.classList.add('btn', 'date-btn');
-            let date_a = document.createElement('a'), text = document.createTextNode(`${date}, ${days[tempDate.getDay()]}`);
-            date_a.classList.add('date');
-            date_a.appendChild(text);
+            let date_btn = document.createElement('button'); date_btn.classList.add('btn', 'date-btn', 'hipster');
+            let date_a = document.createElement('a');
+            date_a.innerHTML = `
+                <div>
+                    <h5>${days[tempDate.getDay()]}</h5>
+                    <h4>${date}</h4>
+                </div>
+            `;
             date_a.href = `/list.html?year=${year}&month=${month}&date=${date}`;
             date_btn.appendChild(date_a);
             monthDOM.appendChild(date_btn);
