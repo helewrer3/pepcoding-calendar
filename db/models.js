@@ -1,21 +1,21 @@
 const sequelize = require('sequelize');
 let db;
-if(process.env.DATABASE_URL) db = new sequelize(process.env.DATABASE_URL, {
-    dialect: 'postgres',
-    protocol: 'postgres',
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false
-        }
-    }
-});
-else{
+// if(process.env.DATABASE_URL) db = new sequelize(process.env.DATABASE_URL, {
+//     dialect: 'postgres',
+//     protocol: 'postgres',
+//     dialectOptions: {
+//         ssl: {
+//             require: true,
+//             rejectUnauthorized: false
+//         }
+//     }
+// });
+// else{
     db = new sequelize({
         dialect: 'sqlite',
         storage: __dirname + '/storage.db'
     });
-}
+// }
 
 const col_id = {
     type: sequelize.DataTypes.INTEGER,
@@ -34,11 +34,11 @@ const Teacher = db.define('teacher', {
 const Class = db.define('class', {
     id: col_id,
     name: sequelize.DataTypes.STRING(40),
-    start: sequelize.DataTypes.NUMBER,
-    end: sequelize.DataTypes.NUMBER,
-    date: sequelize.DataTypes.NUMBER,
-    month: sequelize.DataTypes.NUMBER,
-    year: sequelize.DataTypes.NUMBER
+    start: sequelize.DataTypes.INTEGER,
+    end: sequelize.DataTypes.INTEGER,
+    date: sequelize.DataTypes.INTEGER,
+    month: sequelize.DataTypes.INTEGER,
+    year: sequelize.DataTypes.INTEGER
 })
 
 Teacher.hasMany(Class);
