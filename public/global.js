@@ -2,9 +2,9 @@ const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const makeBtn = (tempDate, DOM) => {
-    let date_btn = document.createElement('button'); 
-    if(tempDate == new Date()) date_btn.classList.add('btn', 'hipster', 'hipster-red');
-    if(tempDate.getTime() == (new Date()).getTime()) date_btn.classList.add('btn', 'hipster', 'hipster-red');
+    tempDate.setHours(0, 0, 0, 0);
+    let date_btn = document.createElement('button'), cur_date = new Date(); cur_date.setHours(0, 0, 0, 0);
+    if(tempDate.getTime() == cur_date.getTime()) date_btn.classList.add('btn', 'hipster', 'hipster-red');
     else date_btn.classList.add('btn', 'hipster');
     date_btn.innerHTML = `
         <a href = "/list.html?year=${tempDate.getFullYear()}&month=${tempDate.getFullYear()}&date=${tempDate.getDate()}">

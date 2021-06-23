@@ -65,3 +65,5 @@ formDOM.addEventListener('submit', async (e) => {
         console.log(error);
     }
 })
+
+document.querySelector('.list-a').href = `list.html?year=${params.year}&month=${params.month}&date=${params.date}`;
