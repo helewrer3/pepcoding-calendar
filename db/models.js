@@ -1,6 +1,9 @@
 const sequelize = require('sequelize');
 let db;
-if(process.env.DATABASE_URL) db = new sequelize(process.env.DATABASE_URL, {
+if(process.env.MYSQL_ADDON_URI) db = new sequelize(process.env.MYSQL_ADDON_URI, {
+	dialect: 'mysql'
+});
+else if(process.env.DATABASE_URL) db = new sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: {
