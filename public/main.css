@@ -119,6 +119,7 @@ ul {
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 /*************
@@ -154,9 +155,17 @@ a {
   width: 30%;
   padding-bottom: 0rem;
 }
+.hipster-red {
+  color: var(--red-dark);
+  background: var(--red-light);
+  box-shadow: var(--shadow-1);
+}
 .hipster:hover {
   background: var(--primary-100);
   box-shadow: var(--shadow-2);
+}
+.hipster-red:hover {
+  background: var(--red-light);
 }
 
 /*************

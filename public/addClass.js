@@ -7,18 +7,23 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
 const init = async () => {
-    const res = await fetch('/api/teacher');
-    const jsondata = await res.json();
-    const data = jsondata.names;
-    for(let i = 0; i < data.length; i++){
-        let teacher = document.createElement('option');
-        teacher.value = data[i].id, teacher.text = data[i].name;
-        teacherDOM.add(teacher);
-    }
-    for(let i = 0; i < 24; i++){
-        let time = document.createElement('option');
-        time.value = i, time.text = i;
-        stDOM.add(time);
+    try {
+        const res = await fetch('/api/teacher');
+        const jsondata = await res.json();
+        const data = jsondata.names;
+        for(let i = 0; i < data.length; i++){
+            let teacher = document.createElement('option');
+            teacher.value = data[i].id, teacher.text = data[i].name;
+            teacherDOM.add(teacher);
+        }
+        for(let i = 0; i < 24; i++){
+            let time = document.createElement('option');
+            time.value = i, time.text = i;
+            stDOM.add(time);
+        }
+    } catch (error) {
+        window.confirm('An error occured. Try again.');
+        console.log(error);
     }
 }
 
@@ -44,12 +49,19 @@ formDOM.addEventListener('submit', async (e) => {
         month: params.month,
         year: params.year,
     };
-    const res = await fetch('/api/class', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newClass)
-    });
-    console.log(newClass);
+    try {
+        const res = await fetch('/api/class', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newClass)
+        });
+        if(res.status == 400) throw('Not unique name');
+        else window.confirm('Operation successful.');
+        console.log(res);
+    } catch (error) {
+        window.confirm('An error occured. Try again.');
+        console.log(error);
+    }
 })
