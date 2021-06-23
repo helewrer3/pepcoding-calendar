@@ -12,7 +12,7 @@ Classroom scheduler application where an admin can schedule different batches fo
 + HTML, CSS, Javascript
 
 ## Usage
-### [Tutorial video](https://youtu.be/dvBRVcdno48)
+### [Tutorial video](https://www.youtube.com/watch?v=2AeyBmnc7rM)
 ### [DB Design](https://dbdiagram.io/d/60d2f068dd6a5971481b7761)
 
 
