@@ -1,6 +1,14 @@
 const sequelize = require('sequelize');
 let db;
-if(process.env.DATABASE_URL) db = new sequelize(process.env.DATABASE_URL);
+if(process.env.DATABASE_URL) db = new sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgresql',
+    dialectOptions: {
+        ssl: {  
+            require: true,
+            rejectUnauthorized: false 
+        }
+    }
+});
 else{
     db = new sequelize({
         dialect: 'sqlite',
