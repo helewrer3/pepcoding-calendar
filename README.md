@@ -1,13 +1,14 @@
 # Pepcoding Intern Assignment
 Classroom scheduler application where an admin can schedule different batches for different teachers.
 
-### The webapp has now been deployed on [Heroku](https://pep-calendar.herokuapp.com/)!
+### The webapp has now been deployed on [Heroku](https://pep-calendar.herokuapp.com/) and [Clever Cloud](http://app-06e436df-c9ab-4807-bd48-e728b92a32d2.cleverapps.io/)
 
 ## Technologies Used
 + NodeJS
 + Express
 + SQLite3 (for local deployment)
 + PostgreSQL (for heroku deployment)
++ MySQL (for clever cloud deployment)
 + Sequelize
 + HTML, CSS, Javascript
 
